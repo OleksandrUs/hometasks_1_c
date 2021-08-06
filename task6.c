@@ -34,7 +34,7 @@ unsigned int factorial(unsigned int value)
  * @param argv the array that contains passed command line arguments
  * @return 0 if successful
  */
-int main(int argc, char * argv)
+int main(int argc, char * argv[])
 {
     const int N = 10;
     unsigned int result;
