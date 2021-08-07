@@ -41,6 +41,27 @@ typedef union {
 } RGB565;
 
 /*
+ * Function prototypes.
+ */
+RGB565 convert_rgb888_to_rgb565(RGB888 original_color);
+void run_demo(void);
+
+/*
+ * The main function of the program.
+ * Demonstration of using the function that converts 
+ * the RGB888 data format to RGB565.
+ * 
+ * @param argc the number of command line arguments
+ * @param argv the array that contains command line arguments
+ * @return 0 if successful
+ */
+int main(int argc, char * argv[])
+{
+    run_demo();
+    return 0;
+}
+
+/*
  * This function converts a value of RGB888 data format into RGB565 data format.
  *
  * @param original_color the variable of the RGB888 data format
@@ -87,19 +108,4 @@ void run_demo(void)
                                             conv_col.g_val, 
                                             conv_col.b_val, 
                                             conv_col.color);
-}
-
-/*
- * The main function of the program.
- * Demonstration of using the function that converts 
- * the RGB888 data format to RGB565.
- * 
- * @param argc the number of command line arguments
- * @param argv the array that contains command line arguments
- * @return 0 if successful
- */
-int main(int argc, char * argv[])
-{
-    run_demo();
-    return 0;
 }

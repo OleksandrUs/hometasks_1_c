@@ -9,21 +9,9 @@
 #include <stdio.h>
 
 /*
- * The function calculates the factorial of a number.
- * Recursion is used in function implementation.
- *
- * @param value the number whose factorial is calculated
- * @return the factorial of the number passed to the function as an argument
+ * Function prototype.
  */
-unsigned int factorial(unsigned int value)
-{
-    if(value == 0) {
-        return 1;
-    }
-    else {
-        return value * factorial(value - 1);
-    }
-}
+unsigned int factorial(unsigned int value);
 
 /*
  * The main function of the program (i.e. entry point).
@@ -44,4 +32,21 @@ int main(int argc, char * argv[])
     printf("Factorial of %d is %d.\n", N, result);
 
     return 0;
+}
+
+/*
+ * The function calculates the factorial of a number.
+ * Recursion is used in function implementation.
+ *
+ * @param value the number whose factorial is calculated
+ * @return the factorial of the number passed to the function as an argument
+ */
+unsigned int factorial(unsigned int value)
+{
+    if(value == 0) {
+        return 1;
+    }
+    else {
+        return value * factorial(value - 1);
+    }
 }

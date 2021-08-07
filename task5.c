@@ -16,26 +16,10 @@
 #include <math.h>
 
 /*
- * The function computes the perimeter of a circle with a specified radius.
- *
- * @param radius the radius of a circle
- * @return the perimeter of a circle with a specified radius
+ * Function prototypes.
  */
-double circle_perimeter(const double radius)
-{
-    return 2 * M_PI * radius;
-} 
-
-/*
- * The function computes the area of a circle with a specified radius.
- *
- * @param radius the radius of a circle
- * @return the area of a circle with a specified radius
- */
-double circle_area(const double radius)
-{
-    return M_PI * pow(radius, 2);
-} 
+double circle_perimeter(const double radius);
+double circle_area(const double radius);
 
 /*
  * The main function of the program.
@@ -56,4 +40,26 @@ int main(int argc, char * argv[])
     printf("The area of a circle with a radius of 6 is %.2f units of area.", area);
 
     return 0;
+}
+
+/*
+ * The function computes the perimeter of a circle with a specified radius.
+ *
+ * @param radius the radius of a circle
+ * @return the perimeter of a circle with a specified radius
+ */
+double circle_perimeter(const double radius)
+{
+    return 2 * M_PI * radius;
+} 
+
+/*
+ * The function computes the area of a circle with a specified radius.
+ *
+ * @param radius the radius of a circle
+ * @return the area of a circle with a specified radius
+ */
+double circle_area(const double radius)
+{
+    return M_PI * pow(radius, 2);
 }

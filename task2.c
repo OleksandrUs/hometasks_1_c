@@ -11,6 +11,29 @@
 #include <inttypes.h>
 
 /*
+ * Function prototypes.
+ */
+uint16_t swap16(uint16_t value);
+uint32_t swap32(uint32_t value);
+uint64_t swap64(uint64_t value);
+void run_demo(void);
+
+/*
+ * The main function of the program.
+ * Demonstration of using the functions swap16, swap32, swap64 which swap bytes in 
+ * variables of the uint16_t, uint32_t and uint64_t data types (endianness conversions).
+ * 
+ * @param argc the number of command line arguments
+ * @param argv the array that contains passed command line arguments
+ * @return 0 if successful
+ */
+int main(int argc, char * argv[])
+{
+    run_demo();
+    return 0;
+}
+
+/*
  * The function changes the sequence of bytes in a variable of uint16_t data type.
  * The most significant byte of a 16-bit integer variable becomes
  * the least significant byte and vice versa.
@@ -101,19 +124,4 @@ void run_demo(void)
     printf("New value after first swap64 function call: 0x%.16" PRIx64 "\n", var_64_bit);
     var_64_bit = swap64(var_64_bit);
     printf("New value after second swap64 function call: 0x%.16" PRIx64 "\n\n", var_64_bit);
-}
-
-/*
- * The main function of the program.
- * Demonstration of using the functions swap16, swap32, swap64 which swap bytes in 
- * variables of the uint16_t, uint32_t and uint64_t data types (endianness conversions).
- * 
- * @param argc the number of command line arguments
- * @param argv the array that contains passed command line arguments
- * @return 0 if successful
- */
-int main(int argc, char * argv[])
-{
-    run_demo();
-    return 0;
 }
