@@ -1,11 +1,11 @@
 /*
-    Task7, task7.c
-    Purpose: write a program that prints all the integer numbers between 1 to 500
-    which are divisible by a number received from a user.
-
-    @author Oleksandr Ushkarenko
-    @version 1.0 06/08/2021
-*/
+ * Task7, task7.c
+ * Purpose: write a program that prints all the integer numbers between 1 to 500
+ * which are divisible by a number received from a user.
+ *
+ * @author Oleksandr Ushkarenko
+ * @version 1.0 06/08/2021
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,7 +26,7 @@
 /*
  * Function prototypes.
  */
-int get_divisor_from_user(int argc, char * argv[]);
+int get_divisor_from_user(int argc, char *argv[]);
 void print_numbers(const int divisor, const int begin_num, const int end_num);
 
 /*
@@ -38,23 +38,24 @@ void print_numbers(const int divisor, const int begin_num, const int end_num);
  * @param argv the array that contains passed command line arguments
  * @return 0 if successful
  */
-int main(int argc, char * argv[])
+int main(int argc, char *argv[])
 {
-    const int RANGE_BEGIN = 1;
-    const int RANGE_END = 500;
-    int divisor;
+        const int RANGE_BEGIN = 1;
+        const int RANGE_END = 500;
+        int divisor;
 
-    divisor = get_divisor_from_user(argc, argv);
+        divisor = get_divisor_from_user(argc, argv);
 
-    if(divisor != 0) {
-        printf("The integer numbers between %d to %d which are divisible by %d:\n", RANGE_BEGIN, RANGE_END, divisor);
-        print_numbers(divisor, RANGE_BEGIN, RANGE_END);
-    }
-    else {
-        printf("The divisor mustn't be 0!\n");
-    }
+        if(divisor != 0) {
+                printf("The integer numbers between %d to %d which are divisible by %d:\n", RANGE_BEGIN,
+                                                                                            RANGE_END,
+                                                                                            divisor);
+                print_numbers(divisor, RANGE_BEGIN, RANGE_END);
+        } else {
+                printf("The divisor mustn't be 0!\n");
+        }
 
-    return 0;
+        return 0;
 }
 
 /*
@@ -66,19 +67,18 @@ int main(int argc, char * argv[])
  * 
  * @return the divisor entered by a user in the console
  */
-int get_divisor_from_user(int argc, char * argv[])
+int get_divisor_from_user(int argc, char *argv[])
 {
-    int value = 0;
+        int value = 0;
 
-    if(argc == CMDLINE_ARGUMENTS_NUM) {
-       value = atoi(argv[DIVISOR_INDEX]);
-    }
-    else {
-        printf("Please, enter the divisor: ");
-        fflush(stdout);
-        scanf("%d", &value);
-    }
-    return value;
+        if(argc == CMDLINE_ARGUMENTS_NUM) {
+        value = atoi(argv[DIVISOR_INDEX]);
+        } else {
+                printf("Please, enter the divisor: ");
+                fflush(stdout);
+                scanf("%d", &value);
+        }
+        return value;
 }
 
 /*
@@ -91,14 +91,13 @@ int get_divisor_from_user(int argc, char * argv[])
  */
 void print_numbers(const int divisor, const int begin_num, const int end_num)
 {
-    if(divisor != 0) {
-         for(int i = begin_num; i <= end_num; i++) {
-            if((i % divisor) == 0){
-                printf("%d\n", i);
-             }
+        if(divisor != 0) {
+                for(int i = begin_num; i <= end_num; i++) {
+                if((i % divisor) == 0){
+                        printf("%d\n", i);
+                }
+                }
+        } else {
+                printf("The divisor mustn't be 0!\n");
         }
-    }
-    else {
-        printf("The divisor mustn't be 0!\n");
-    }
 }

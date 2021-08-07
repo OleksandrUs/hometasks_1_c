@@ -1,10 +1,10 @@
 /*
-    Task6, task6.c
-    Purpose: write a program that computes the factorial of 10.
-
-    @author Oleksandr Ushkarenko
-    @version 1.0 06/08/2021
-*/
+ * Task6, task6.c
+ * Purpose: write a program that computes the factorial of 10.
+ *
+ * @author Oleksandr Ushkarenko
+ * @version 1.0 06/08/2021
+ */
 
 #include <stdio.h>
 
@@ -22,16 +22,16 @@ unsigned int factorial(unsigned int value);
  * @param argv the array that contains passed command line arguments
  * @return 0 if successful
  */
-int main(int argc, char * argv[])
+int main(int argc, char *argv[])
 {
-    const int N = 10;
-    unsigned int result;
+        const int N = 10;
+        unsigned int result;
 
-    result = factorial(N);
+        result = factorial(N);
 
-    printf("Factorial of %d is %d.\n", N, result);
+        printf("Factorial of %d is %d.\n", N, result);
 
-    return 0;
+        return 0;
 }
 
 /*
@@ -43,8 +43,8 @@ int main(int argc, char * argv[])
  */
 unsigned int factorial(unsigned int value)
 {
-    if(value == 0) {
-        return 1;
-    }
-    return value * factorial(value - 1);
+        if(value == 0) {
+                return 1;
+        }
+        return value * factorial(value - 1);
 }

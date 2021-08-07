@@ -1,11 +1,11 @@
 /*
-    Task2, task2.c
-    Purpose: write the swap16, swap32, swap64 functions that swap bytes in 
-    uint16_t, uint32_t, and uint64_t (endianness conversions).
-
-    @author Oleksandr Ushkarenko
-    @version 1.0 06/08/2021
-*/
+ * Task2, task2.c
+ * Purpose: write the swap16, swap32, swap64 functions that swap bytes in 
+ * uint16_t, uint32_t, and uint64_t (endianness conversions).
+ *
+ * @author Oleksandr Ushkarenko
+ * @version 1.0 06/08/2021
+ */
 
 #include <stdio.h>
 #include <inttypes.h>
@@ -27,10 +27,10 @@ void run_demo(void);
  * @param argv the array that contains passed command line arguments
  * @return 0 if successful
  */
-int main(int argc, char * argv[])
+int main(int argc, char *argv[])
 {
-    run_demo();
-    return 0;
+        run_demo();
+        return 0;
 }
 
 /*
@@ -43,7 +43,7 @@ int main(int argc, char * argv[])
  */
 uint16_t swap16(uint16_t value)
 {
-    return ((value >> 8) | ((value & 0x00FF) << 8));
+        return ((value >> 8) | ((value & 0x00FF) << 8));
 }
 
 /*
@@ -56,12 +56,12 @@ uint16_t swap16(uint16_t value)
  */
 uint32_t swap32(uint32_t value)
 {
-    uint32_t new_value = 0;
-    new_value = ((value & 0xFF000000) >> 24) |
+        uint32_t new_value = 0;
+        new_value = ((value & 0xFF000000) >> 24) |
                 ((value & 0x00FF0000) >> 8) |
                 ((value & 0x0000FF00) << 8) |
                 ((value & 0x000000FF) << 24);
-    return new_value;
+        return new_value;
 }
 
 /*
@@ -74,8 +74,8 @@ uint32_t swap32(uint32_t value)
  */
 uint64_t swap64(uint64_t value)
 {   
-    uint64_t new_value = 0;
-    new_value = ((value & 0xFF00000000000000) >> 56) |
+        uint64_t new_value = 0;
+        new_value = ((value & 0xFF00000000000000) >> 56) |
                 ((value & 0x00FF000000000000) >> 40) |
                 ((value & 0x0000FF0000000000) >> 24) |
                 ((value & 0x000000FF00000000) >> 8) |
@@ -83,7 +83,7 @@ uint64_t swap64(uint64_t value)
                 ((value & 0x0000000000FF0000) << 24) |
                 ((value & 0x000000000000FF00) << 40) |
                 ((value & 0x00000000000000FF) << 56);
-    return new_value;
+        return new_value;
 }
 
 /*
@@ -96,32 +96,32 @@ uint64_t swap64(uint64_t value)
  */
 void run_demo(void)
 {
-    printf("\nDemonstration of the swap16, swap32 and swap64 function calls:\n\n");
+        printf("\nDemonstration of the swap16, swap32 and swap64 function calls:\n\n");
     
-    // swap16 function calls
-    uint16_t  var_16_bit = 0x3210;
-    printf("-------------swap16 function call--------------\n");
-    printf("Original value: %#.4x\n", var_16_bit);
-    var_16_bit = swap16(var_16_bit);
-    printf("New value after first swap16 function call: %#.4x\n", var_16_bit);
-    var_16_bit = swap16(var_16_bit);
-    printf("New value after second swap16 function call: %#.4x\n\n", var_16_bit);
+        // swap16 function calls
+        uint16_t  var_16_bit = 0x3210;
+        printf("-------------swap16 function call--------------\n");
+        printf("Original value: %#.4x\n", var_16_bit);
+        var_16_bit = swap16(var_16_bit);
+        printf("New value after first swap16 function call: %#.4x\n", var_16_bit);
+        var_16_bit = swap16(var_16_bit);
+        printf("New value after second swap16 function call: %#.4x\n\n", var_16_bit);
 
-    // swap32 function calls
-    uint32_t  var_32_bit = 0x76543210;
-    printf("-------------swap32 function call--------------\n");
-    printf("Original value: %#.8x\n", var_32_bit);
-    var_32_bit = swap32(var_32_bit);
-    printf("New value after first swap32 function call: %#.8x\n", var_32_bit);
-    var_32_bit = swap32(var_32_bit);
-    printf("New value after second swap32 function call: %#.8x\n\n", var_32_bit);
+        // swap32 function calls
+        uint32_t  var_32_bit = 0x76543210;
+        printf("-------------swap32 function call--------------\n");
+        printf("Original value: %#.8x\n", var_32_bit);
+         var_32_bit = swap32(var_32_bit);
+        printf("New value after first swap32 function call: %#.8x\n", var_32_bit);
+        var_32_bit = swap32(var_32_bit);
+        printf("New value after second swap32 function call: %#.8x\n\n", var_32_bit);
 
-    // swap64 function calls
-    uint64_t  var_64_bit = 0xfedcba9876543210;
-    printf("-------------swap64 function call--------------\n");
-    printf("Original value: 0x%.16" PRIx64 "\n", var_64_bit);
-    var_64_bit = swap64(var_64_bit);
-    printf("New value after first swap64 function call: 0x%.16" PRIx64 "\n", var_64_bit);
-    var_64_bit = swap64(var_64_bit);
-    printf("New value after second swap64 function call: 0x%.16" PRIx64 "\n\n", var_64_bit);
+        // swap64 function calls
+        uint64_t  var_64_bit = 0xfedcba9876543210;
+        printf("-------------swap64 function call--------------\n");
+        printf("Original value: 0x%.16" PRIx64 "\n", var_64_bit);
+        var_64_bit = swap64(var_64_bit);
+        printf("New value after first swap64 function call: 0x%.16" PRIx64 "\n", var_64_bit);
+        var_64_bit = swap64(var_64_bit);
+        printf("New value after second swap64 function call: 0x%.16" PRIx64 "\n\n", var_64_bit);
 }

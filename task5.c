@@ -1,11 +1,11 @@
 /*
-    Task5, task5.c
-    Purpose: write a program that computes the perimeter and the area of a
-    circle with a radius of 6.
-
-    @author Oleksandr Ushkarenko
-    @version 1.0 06/08/2021
-*/
+ * Task5, task5.c
+ *  Purpose: write a program that computes the perimeter and the area of a
+ * circle with a radius of 6.
+ *
+ * @author Oleksandr Ushkarenko
+ * @version 1.0 06/08/2021
+ */
 
 /*
  * This definition allows to use useful mathematical constants, such as PI etc.
@@ -30,16 +30,16 @@ void print_circle_params(const double perimeter, const double area);
  * @param argv the array that contains passed command line arguments
  * @return 0 if successful
  */
-int main(int argc, char * argv[])
+int main(int argc, char *argv[])
 {
-    const double RADIUS = 6;
+        const double RADIUS = 6;
 
-    double perimeter = circle_perimeter(RADIUS);
-    double area = circle_area(RADIUS);
+        double perimeter = circle_perimeter(RADIUS);
+        double area = circle_area(RADIUS);
 
-    print_circle_params(perimeter, area);
+        print_circle_params(perimeter, area);
 
-    return 0;
+        return 0;
 }
 
 /*
@@ -50,7 +50,7 @@ int main(int argc, char * argv[])
  */
 double circle_perimeter(const double radius)
 {
-    return 2 * M_PI * radius;
+        return 2 * M_PI * radius;
 } 
 
 /*
@@ -61,7 +61,7 @@ double circle_perimeter(const double radius)
  */
 double circle_area(const double radius)
 {
-    return M_PI * pow(radius, 2);
+        return M_PI * pow(radius, 2);
 }
 
 /*
@@ -72,6 +72,6 @@ double circle_area(const double radius)
  */
 void print_circle_params(const double perimeter, const double area)
 {
-    printf("The perimeter of a circle with a radius of 6 is %.2f units of length.\n", perimeter);
-    printf("The area of a circle with a radius of 6 is %.2f units of area.\n", area);
+        printf("The perimeter of a circle with a radius of 6 is %.2f units of length.\n", perimeter);
+        printf("The area of a circle with a radius of 6 is %.2f units of area.\n", area);
 }
