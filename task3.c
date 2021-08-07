@@ -90,13 +90,13 @@ void run_demo(void)
     RGB888 orig_col;
     printf("Enter R value of RGB888 data format: ");
     fflush(stdout); 
-    scanf("%d", &orig_col.r_val);
+    scanf("%hhd", &orig_col.r_val);
     printf("Enter G value of RGB888 data format: ");
     fflush(stdout); 
-    scanf("%d", &orig_col.g_val);
+    scanf("%hhd", &orig_col.g_val);
     printf("Enter B value of RGB888 data format: ");
     fflush(stdout); 
-    scanf("%d", &orig_col.b_val);
+    scanf("%hhd", &orig_col.b_val);
 
     RGB565 conv_col = convert_rgb888_to_rgb565(orig_col);
     
