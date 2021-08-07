@@ -73,5 +73,5 @@ double circle_area(const double radius)
 void print_circle_params(const double perimeter, const double area)
 {
     printf("The perimeter of a circle with a radius of 6 is %.2f units of length.\n", perimeter);
-    printf("The area of a circle with a radius of 6 is %.2f units of area.", area);
+    printf("The area of a circle with a radius of 6 is %.2f units of area.\n", area);
 }

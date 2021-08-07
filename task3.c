@@ -113,13 +113,13 @@ RGB888 parse_cmd_line_args(char * argv[])
 RGB888 get_rgb888_from_user(void)
 {
     RGB888 orig_col;
-    printf("Enter R value of the RGB888 data format: ");
+    printf("Enter R value [0-255]: ");
     fflush(stdout); 
     scanf("%hhd", &orig_col.r_val);
-    printf("Enter G value of the RGB888 data format: ");
+    printf("Enter G value [0-255]: ");
     fflush(stdout); 
     scanf("%hhd", &orig_col.g_val);
-    printf("Enter B value of the RGB888 data format: ");
+    printf("Enter B value [0-255]: ");
     fflush(stdout); 
     scanf("%hhd", &orig_col.b_val);
     return orig_col;
