@@ -7,6 +7,7 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <inttypes.h>
 
 #define CMD_LINE_ARGS_COUNT 4
@@ -97,9 +98,9 @@ RGB565 convert_rgb888_to_rgb565(RGB888 original_color)
 RGB888 parse_cmd_line_args(char * argv[])
 {
     RGB888 orig_col;
-    sscanf(argv[R_INDEX], "%hhd", &orig_col.r_val);
-    sscanf(argv[G_INDEX], "%hhd", &orig_col.g_val);
-    sscanf(argv[B_INDEX], "%hhd", &orig_col.b_val);
+    orig_col.r_val = atoi(argv[R_INDEX]);
+    orig_col.g_val = atoi(argv[G_INDEX]);
+    orig_col.b_val = atoi(argv[B_INDEX]);
     return orig_col;
 }
 
@@ -112,13 +113,13 @@ RGB888 parse_cmd_line_args(char * argv[])
 RGB888 get_rgb888_from_user(void)
 {
     RGB888 orig_col;
-    printf("Enter R value of RGB888 data format: ");
+    printf("Enter R value of the RGB888 data format: ");
     fflush(stdout); 
     scanf("%hhd", &orig_col.r_val);
-    printf("Enter G value of RGB888 data format: ");
+    printf("Enter G value of the RGB888 data format: ");
     fflush(stdout); 
     scanf("%hhd", &orig_col.g_val);
-    printf("Enter B value of RGB888 data format: ");
+    printf("Enter B value of the RGB888 data format: ");
     fflush(stdout); 
     scanf("%hhd", &orig_col.b_val);
     return orig_col;
