@@ -20,6 +20,7 @@
  */
 double circle_perimeter(const double radius);
 double circle_area(const double radius);
+void print_circle_params(const double perimeter, const double area);
 
 /*
  * The main function of the program.
@@ -36,8 +37,7 @@ int main(int argc, char * argv[])
     double perimeter = circle_perimeter(RADIUS);
     double area = circle_area(RADIUS);
 
-    printf("The perimeter of a circle with a radius of 6 is %.2f units of length.\n", perimeter);
-    printf("The area of a circle with a radius of 6 is %.2f units of area.", area);
+    print_circle_params(perimeter, area);
 
     return 0;
 }
@@ -62,4 +62,16 @@ double circle_perimeter(const double radius)
 double circle_area(const double radius)
 {
     return M_PI * pow(radius, 2);
+}
+
+/*
+ * The function prints the perimeter and the area of the circle in the console window.
+ *
+ * @param perimeter the perimeter of a circle
+ * @param area the area of a circle
+ */
+void print_circle_params(const double perimeter, const double area)
+{
+    printf("The perimeter of a circle with a radius of 6 is %.2f units of length.\n", perimeter);
+    printf("The area of a circle with a radius of 6 is %.2f units of area.", area);
 }
