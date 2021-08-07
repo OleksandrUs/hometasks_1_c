@@ -29,8 +29,8 @@ gcc 8.1.0
 **Run the program in Terminal**
 - To run the specific program run one of the commands in 'Terminal' from the root project directory:<br>
 ``./task2``<br>
-``./task3``<br>
+``./task3 [<R_value> <G_value> <B_value>]``<br>
 ``./task4``<br>
 ``./task5``<br>
 ``./task6``<br>
-``./task7``
+``./task7 [<divisor>]``

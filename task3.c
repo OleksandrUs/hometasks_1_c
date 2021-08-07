@@ -9,6 +9,11 @@
 #include <stdio.h>
 #include <inttypes.h>
 
+#define CMD_LINE_ARGS_COUNT 4
+#define R_INDEX 1
+#define G_INDEX 2
+#define B_INDEX 3
+
 /*
  * The data structure is used to store the RGB888 data format components
  * such as red, green and blue values.
@@ -44,7 +49,10 @@ typedef union {
  * Function prototypes.
  */
 RGB565 convert_rgb888_to_rgb565(RGB888 original_color);
-void run_demo(void);
+RGB888 parse_cmd_line_args(char * argv[]);
+RGB888 get_rgb888_from_user(void);
+void run_demo(int argc, char * argv[]);
+void print_info(RGB888 orig_color, RGB565 conv_color);
 
 /*
  * The main function of the program.
@@ -57,7 +65,7 @@ void run_demo(void);
  */
 int main(int argc, char * argv[])
 {
-    run_demo();
+    run_demo(argc, argv);
     return 0;
 }
 
@@ -80,12 +88,28 @@ RGB565 convert_rgb888_to_rgb565(RGB888 original_color)
 }
 
 /*
- * This function demonstrates the use of the convert_rgb888_to_rgb565 function.
- * Test value received from a user represented in the RGB888 data format and passed into 
- * convert_rgb888_to_rgb565 function as an argument. The original value and the result
- * of its conversion to the RGB565 data format are printed.
+ * The function processes command line arguments to extract R, G and B
+ * values and puts them in the variable of the RGB888 data format.
+ *
+ * @param argv the array that contains command line arguments
+ * @return the value of the RGB888 data format
  */
-void run_demo(void)
+RGB888 parse_cmd_line_args(char * argv[])
+{
+    RGB888 orig_col;
+    sscanf(argv[R_INDEX], "%hhd", &orig_col.r_val);
+    sscanf(argv[G_INDEX], "%hhd", &orig_col.g_val);
+    sscanf(argv[B_INDEX], "%hhd", &orig_col.b_val);
+    return orig_col;
+}
+
+/*
+ * The function gets from a user the R, G and B values and puts them
+ * in the variable of the RGB888 data format.
+ *
+ * @return the value of the RGB888 data format
+ */
+RGB888 get_rgb888_from_user(void)
 {
     RGB888 orig_col;
     printf("Enter R value of RGB888 data format: ");
@@ -97,9 +121,19 @@ void run_demo(void)
     printf("Enter B value of RGB888 data format: ");
     fflush(stdout); 
     scanf("%hhd", &orig_col.b_val);
+    return orig_col;
+}
 
-    RGB565 conv_col = convert_rgb888_to_rgb565(orig_col);
-    
+/*
+ * The function prints the components of the RGB888 and RGB565 data types
+ * in the format [R, G, B]. For the RGB565 data format the value in 
+ * hexadecimal format is also printed.
+ * 
+ * @param orig_color the value of the RGB888 data format
+ * @param orig_color the value of the RGB565 data format
+ */
+void print_info(RGB888 orig_col, RGB565 conv_col)
+{
     printf("RGB888: [%d, %d, %d]\n", orig_col.r_val, 
                                      orig_col.g_val, 
                                      orig_col.b_val);
@@ -108,4 +142,29 @@ void run_demo(void)
                                             conv_col.g_val, 
                                             conv_col.b_val, 
                                             conv_col.color);
+}
+
+/*
+ * This function demonstrates the use of the convert_rgb888_to_rgb565 function.
+ * Test value received from a user represented in the RGB888 data format and passed into 
+ * convert_rgb888_to_rgb565 function as an argument. The original value and the result
+ * of its conversion to the RGB565 data format are printed.
+ * 
+ * @param argc the number of command line arguments
+ * @param argv the array that contains command line arguments
+ */
+void run_demo(int argc, char * argv[])
+{
+    RGB888 orig_col;
+
+    if(argc == CMD_LINE_ARGS_COUNT) {
+        orig_col = parse_cmd_line_args(argv);
+    }
+    else {
+        orig_col = get_rgb888_from_user();
+    }
+
+    RGB565 conv_col = convert_rgb888_to_rgb565(orig_col);
+    
+    print_info(orig_col, conv_col);
 }
