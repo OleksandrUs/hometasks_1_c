@@ -49,11 +49,11 @@ typedef union {
 /*
  * Function prototypes.
  */
-RGB565 convert_rgb888_to_rgb565(RGB888 original_color);
-RGB888 parse_cmd_line_args(char * argv[]);
+RGB565 convert_rgb888_to_rgb565(const RGB888 *original_color);
+RGB888 parse_cmd_line_args(char *argv[]);
 RGB888 get_rgb888_from_user(void);
 void run_demo(int argc, char *argv[]);
-void print_info(RGB888 orig_color, RGB565 conv_color);
+void print_info(const RGB888 *orig_color, const RGB565 *conv_color);
 
 /*
  * The main function of the program.
@@ -73,18 +73,18 @@ int main(int argc, char *argv[])
 /*
  * This function converts a value of RGB888 data format into RGB565 data format.
  *
- * @param original_color the variable of the RGB888 data format
+ * @param original_color the pointer to the variable of the RGB888 data format
  * @return the converted value to the RGB565 data format 
  */
-RGB565 convert_rgb888_to_rgb565(RGB888 original_color)
+RGB565 convert_rgb888_to_rgb565(const RGB888 *original_color)
 {
         RGB565 converted_color;
         // Masks 0x1F and 0x3F below are not necessary in this case due to the internal
         // structurer of RGB888 and RGB565 are known. But, in general, it is safer in case if
         // the internal structure of this data formats are unkown.
-        converted_color.r_val = (original_color.r_val >> 3) & 0x1F;
-        converted_color.g_val = (original_color.g_val >> 2) & 0x3F;
-        converted_color.b_val = (original_color.b_val >> 3) & 0x1F;
+        converted_color.r_val = (original_color->r_val >> 3) & 0x1F;
+        converted_color.g_val = (original_color->g_val >> 2) & 0x3F;
+        converted_color.b_val = (original_color->b_val >> 3) & 0x1F;
         return converted_color;
 }
 
@@ -130,19 +130,19 @@ RGB888 get_rgb888_from_user(void)
  * in the format [R, G, B]. For the RGB565 data format the value in 
  * hexadecimal format is also printed.
  * 
- * @param orig_color the value of the RGB888 data format
- * @param orig_color the value of the RGB565 data format
+ * @param orig_color the pointer to the variable of the RGB888 data format
+ * @param orig_color the pointer to the variable of the RGB565 data format
  */
-void print_info(RGB888 orig_col, RGB565 conv_col)
+void print_info(const RGB888 *orig_col, const RGB565 *conv_col)
 {
-        printf("RGB888: [%d, %d, %d]\n", orig_col.r_val, 
-                                        orig_col.g_val, 
-                                        orig_col.b_val);
+        printf("RGB888: [%d, %d, %d]\n", orig_col->r_val, 
+                                        orig_col->g_val, 
+                                        orig_col->b_val);
 
-        printf("RGB565: [%d, %d, %d], %#.4x\n", conv_col.r_val,
-                                                conv_col.g_val, 
-                                                conv_col.b_val, 
-                                                conv_col.color);
+        printf("RGB565: [%d, %d, %d], %#.4x\n", conv_col->r_val,
+                                                conv_col->g_val, 
+                                                conv_col->b_val, 
+                                                conv_col->color);
 }
 
 /*
@@ -164,7 +164,7 @@ void run_demo(int argc, char *argv[])
                 orig_col = get_rgb888_from_user();
         }
 
-        RGB565 conv_col = convert_rgb888_to_rgb565(orig_col);
+        RGB565 conv_col = convert_rgb888_to_rgb565(&orig_col);
         
-        print_info(orig_col, conv_col);
+        print_info(&orig_col, &conv_col);
 }

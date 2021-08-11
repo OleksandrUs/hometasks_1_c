@@ -9,7 +9,13 @@
 #include <stdio.h>
 
 /*
- * Function prototype.
+ * Comment next directive to prevent using recursion 
+ * in the function for calculating the factorial value of an integer. 
+ */
+#define _ENABLE_RECURSION
+
+/*
+ * The prototype of the function for calculating the factorial value of an integer.
  */
 unsigned int factorial(unsigned int value);
 
@@ -34,17 +40,35 @@ int main(int argc, char *argv[])
         return 0;
 }
 
-/*
- * The function calculates the factorial of a number.
- * Recursion is used in function implementation.
- *
- * @param value the number whose factorial is calculated
- * @return the factorial of the number passed to the function as an argument
- */
-unsigned int factorial(unsigned int value)
-{
-        if(value == 0) {
-                return 1;
+#ifdef _ENABLE_RECURSION
+        /*
+        * Recursive function for calculating the factorial value of an integer.
+        *
+        * @param value the integer number whose factorial is calculated
+        * @return the factorial of the number passed to the function as an argument
+        */
+        unsigned int factorial(unsigned int value)
+        {
+                if(value == 0) {
+                        return 1;
+                }
+                return value * factorial(value - 1);
         }
-        return value * factorial(value - 1);
-}
+#else
+        /*
+        * The function calculates the factorial of a number.
+        * No recursion is used.
+        *
+        * @param value the number whose factorial is calculated
+        * @return the factorial of the number passed to the function as an argument
+        */
+        unsigned int factorial(unsigned int value)
+        {
+                unsigned int result = 1;
+                unsigned int i;
+                for(i = value; i > 1; i--) {
+                        result *= i;
+                }
+                return result;
+        }
+#endif

@@ -38,10 +38,10 @@ typedef struct {
 RECT build_rect(void);
 double get_rect_height(void);
 double get_rect_width(void);
-double calc_rect_perimeter_inches(const RECT rect);
-double calc_rect_area_inches(const RECT rect);
+static inline double calc_rect_perimeter_inches(const RECT *rect);
+static inline double calc_rect_area_inches(const RECT *rect);
 void print_rect_params(double perimeter, double area);
-int validate_rect(RECT rect);
+int validate_rect(const RECT *rect);
 
 /*
  * The main function of the program.
@@ -60,9 +60,9 @@ int main(int argc, char *argv[])
 
         rect = build_rect();    
 
-        if(validate_rect(rect) == VALID) {
-                perimeter = calc_rect_perimeter_inches(rect);
-                area = calc_rect_area_inches(rect);
+        if(validate_rect(&rect) == VALID) {
+                perimeter = calc_rect_perimeter_inches(&rect);
+                area = calc_rect_area_inches(&rect);
                 print_rect_params(perimeter, area);
         } 
 
@@ -117,24 +117,28 @@ double get_rect_width(void)
 
 /*
  * The function calculates the perimeter of the rectangle in inches.
+ * Because this function is quite simple and short, it can be
+ * more efficient to use it as inline.
  *
- * @param the instance of RECT data structure
+ * @param the pointer to the instance of the RECT data structure
  * @return the perimeter of the the rectangle in inches
  */
-double calc_rect_perimeter_inches(const RECT rect)
+static inline double calc_rect_perimeter_inches(const RECT *rect)
 {
-        return 2 * (rect.height + rect.width) * INCHES_IN_METER;
+        return 2 * (rect->height + rect->width) * INCHES_IN_METER;
 }
 
 /*
  * The function calculates the area of the rectangle in square inches.
- *
- * @param rect the instance of RECT data structure
+ * Because this function is quite simple and short, it can be
+ * more efficient to use it as inline.
+ * 
+ * @param rect the pointer to the instance of the RECT data structure
  * @return the area of the the rectangle in inches
  */
-double calc_rect_area_inches(const RECT rect)
+static inline double calc_rect_area_inches(const RECT *rect)
 {
-        return rect.height * rect.width * pow(INCHES_IN_METER, 2);
+        return rect->height * rect->width * pow(INCHES_IN_METER, 2);
 }
 
 /*
@@ -154,13 +158,13 @@ void print_rect_params(double perimeter, double area)
  * are not negative. If one af the fields of the structure is negative,
  * the information message for user will be printed.
  *
- * @param rect the instance of RECT data structure to be checked
+ * @param rect the pointer to the instance of the RECT data structure to be checked
  * @return VALID if height and width of the rectangle are not negative, 
  * otherwise return IVNALID 
  */
-int validate_rect(RECT rect)
+int validate_rect(const RECT *rect)
 {
-  if((rect.height >= 0) && (rect.width >= 0)) {
+  if((rect->height >= 0) && (rect->width >= 0)) {
           return VALID;
   } else {
         printf("Height and width of a rectangle must be positive numbers!\n");

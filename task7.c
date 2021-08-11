@@ -27,7 +27,8 @@
  * Function prototypes.
  */
 int get_divisor_from_user(int argc, char *argv[]);
-void print_numbers(const int divisor, const int begin_num, const int end_num);
+void print_numbers(int divisor, int begin_num, int end_num);
+static inline int reminder(int number, int divisor);
 
 /*
  * The main function of the program.
@@ -89,15 +90,29 @@ int get_divisor_from_user(int argc, char *argv[])
  * @param begin_num the begining of the range of numbers
  * @param end_num the ending of the range of numbers
  */
-void print_numbers(const int divisor, const int begin_num, const int end_num)
+void print_numbers(int divisor, int begin_num, int end_num)
 {
         if(divisor != 0) {
                 for(int i = begin_num; i <= end_num; i++) {
-                if((i % divisor) == 0){
+                if(reminder(i, divisor) == 0){
                         printf("%d\n", i);
                 }
                 }
         } else {
                 printf("The divisor mustn't be 0!\n");
         }
+}
+
+/*
+ * The function checks if a specific number is divisible by an another number.
+ * Because this function is quite simple and short, it can be
+ * more efficient to use it as inline.
+ * 
+ * @param number is a number for checking if it is divisible by the divisor without reminder
+ * @param divisor is a divisor
+ * @return 1 if the number is divisible by the divisor without reminder, otherwise 0
+ */
+static inline int reminder(int number, int divisor)
+{
+        return (number % divisor);
 }
